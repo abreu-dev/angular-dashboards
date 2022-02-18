@@ -1,0 +1,26 @@
+.row-box-info {
+    padding: 25px 0;
+    margin: 0 -20px;
+}
+
+.row-box-info .box-info {
+    float: left;
+    padding: 0 20px;
+    margin: 0 10px;
+    width: 180px;
+    border: 1px solid #c7c4c4;;
+}
+
+.row-box-info .box-info .title {
+    display: block;
+    font-size: 15px;
+    width: auto;
+}
+
+.row-box-info .box-info .content {
+    font-size: 20px;
+}
+
+.row-box-info .box-info .content i {
+    margin-right: 10px;
+}
