@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { DashboardNgxChartsAdvancedPieComponent } from './components/advanced-pie/advanced-pie.component';
+import { DashboardService } from '../../services/dashboard.service';
 
 @NgModule({
   imports: [
@@ -10,6 +11,7 @@ import { DashboardNgxChartsAdvancedPieComponent } from './components/advanced-pi
     NgxChartsModule
   ],
   declarations: [DashboardNgxChartsAdvancedPieComponent],
-  exports: [DashboardNgxChartsAdvancedPieComponent]
+  exports: [DashboardNgxChartsAdvancedPieComponent],
+  providers: [DashboardService]
 })
 export class DashboardNgxChartsModule { }
