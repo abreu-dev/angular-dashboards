@@ -17,10 +17,11 @@
                     <tr>
                         <td>Category:</td>
                         <td>
-                            <select class="form-select">
+                            <select class="form-select" [(ngModel)]="selectedCategory" (change)="categoryChanged()">
                                 <option>All</option>
-                                <option>Technology</option>
-                                <option>Clothing</option>
+                                <option *ngFor="let value of dashboard.values"
+                                    [value]="value.name"
+                                >{{ value.name }}</option>
                             </select>
                         </td>
                     </tr>

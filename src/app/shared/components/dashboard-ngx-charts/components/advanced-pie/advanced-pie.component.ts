@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 
+import { DashboardModel } from '../../../../models/dashboard.model';
 import { DashboardService } from '../../../../services/dashboard.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { DashboardService } from '../../../../services/dashboard.service';
 })
 export class DashboardNgxChartsAdvancedPieComponent { 
   chartData = [];
+  dashboard: DashboardModel;
 
   view: any[] = [700, 400];
   gradient: boolean = true;
@@ -18,15 +20,26 @@ export class DashboardNgxChartsAdvancedPieComponent {
   };
 
   public showSettings: boolean = false;
+  public selectedCategory: string;
 
   @Input()
   public chartTitle: string;
 
   constructor(private dashboardService: DashboardService) {
-    this.chartData = this.dashboardService.get().values;
+    this.selectedCategory = 'All';
+    this.dashboard = this.dashboardService.get();
+    this.chartData = this.dashboard.values;
   }
 
   public toggleSettings(): void {
     this.showSettings = !this.showSettings;
+  }
+
+  public categoryChanged(): void {
+    if (this.selectedCategory == 'All') {
+      this.chartData = this.dashboard.values;
+    } else {
+      this.chartData = this.dashboard.values.find(x => x.name == this.selectedCategory).values;
+    }
   }
 }
