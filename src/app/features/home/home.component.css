@@ -33,14 +33,14 @@
     clear: both;
 }
 
-/* ROW GRAPHICS */
+/* ROW chartS */
 
-.graphic-container {
+.chart-container {
     display: flex;
     width: 1200px;
 }
 
-.graphic-box {
+.chart-box {
     flex: 1;
     border: 1px solid #c7c4c4;;
     background-color: #f1f2f7;
@@ -51,7 +51,7 @@
     white-space: nowrap;
 }  
 
-.graphic {
+.chart {
     overflow-x: auto;
     overflow-y: auto;
     white-space: nowrap;
