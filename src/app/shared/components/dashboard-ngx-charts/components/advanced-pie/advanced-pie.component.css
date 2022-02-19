@@ -1,0 +1,18 @@
+.chart-header {
+    text-align: center;
+}
+
+.chart-header .chart-header-title {
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.chart-header .chart-header-settings {
+    cursor: pointer;
+}
+
+.chart-body {
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
