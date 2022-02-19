@@ -1,9 +1,32 @@
 <div class="chart-card">
     <div class="chart-header">
-        <h6 class="chart-header-title">NGX Chart Advanced Pie</h6>
-        <button type="button" class="btn chart-header-settings">
+        <h6 class="chart-header-title">{{ chartTitle }}</h6>
+        <button type="button" class="btn chart-header-settings-button" (click)="toggleSettings()">
             <i class="fa fa-cog" aria-hidden="true"></i>
         </button>
+
+        <div class="chart-header-settings" *ngIf="showSettings" (outsideClick)="showSettings = false">
+            <table class="table-bordered">
+                <caption hidden="true">Settings</caption>
+                <thead>
+                    <tr>
+                        <th colspan="2">Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Category:</td>
+                        <td>
+                            <select class="form-select">
+                                <option>All</option>
+                                <option>Technology</option>
+                                <option>Clothing</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <hr/>

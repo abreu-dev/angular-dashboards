@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { DashboardService } from '../../../../services/dashboard.service';
 
@@ -17,7 +17,16 @@ export class DashboardNgxChartsAdvancedPieComponent {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
+  public showSettings: boolean = false;
+
+  @Input()
+  public chartTitle: string;
+
   constructor(private dashboardService: DashboardService) {
     this.chartData = this.dashboardService.get().values;
+  }
+
+  public toggleSettings(): void {
+    this.showSettings = !this.showSettings;
   }
 }
