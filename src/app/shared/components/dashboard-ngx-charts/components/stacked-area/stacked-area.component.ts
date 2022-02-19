@@ -4,16 +4,19 @@ import { DashboardModel } from '../../../../models/dashboard.model';
 import { DashboardService } from '../../../../services/dashboard.service';
 
 @Component({
-  selector: 'app-dashboard-ngx-charts-advanced-pie',
-  templateUrl: './advanced-pie.component.html',
-  styleUrls: ['./advanced-pie.component.css']
+  selector: 'app-dashboard-ngx-charts-stacked-area-chart',
+  templateUrl: './stacked-area.component.html',
+  styleUrls: ['./stacked-area.component.css']
 })
-export class DashboardNgxChartsAdvancedPieComponent { 
+export class DashboardNgxChartsStackedAreaComponent { 
   chartData = [];
-  dashboard: DashboardModel;
+  dashboard: DashboardModel[];
 
   view: any[] = [700, 400];
-  gradient: boolean = true;
+  legend: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  timeline: boolean = true;
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -27,8 +30,8 @@ export class DashboardNgxChartsAdvancedPieComponent {
 
   constructor(private dashboardService: DashboardService) {
     this.selectedCategory = 'All';
-    this.dashboard = this.dashboardService.getForAdvancedPie();
-    this.chartData = this.dashboard.values;
+    this.dashboard = this.dashboardService.getForStackedArea();
+    this.chartData = this.dashboard;
   }
 
   public toggleSettings(): void {
@@ -37,9 +40,9 @@ export class DashboardNgxChartsAdvancedPieComponent {
 
   public categoryChanged(): void {
     if (this.selectedCategory == 'All') {
-      this.chartData = this.dashboard.values;
+      this.chartData = this.dashboard;
     } else {
-      this.chartData = this.dashboard.values.find(x => x.name == this.selectedCategory).values;
+      this.chartData = this.dashboard.find(x => x.name == this.selectedCategory).childs;
     }
   }
 }

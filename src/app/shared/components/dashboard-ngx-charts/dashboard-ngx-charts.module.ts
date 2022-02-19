@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { DashboardNgxChartsAdvancedPieComponent } from './components/advanced-pie/advanced-pie.component';
+import { DashboardNgxChartsStackedAreaComponent } from './components/stacked-area/stacked-area.component';
 import { OutsideClickDirective } from '../../directives/outside-click.directive';
 import { DashboardService } from '../../services/dashboard.service';
 
@@ -14,8 +15,14 @@ import { DashboardService } from '../../services/dashboard.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [DashboardNgxChartsAdvancedPieComponent, OutsideClickDirective],
-  exports: [DashboardNgxChartsAdvancedPieComponent],
+  declarations: [
+    DashboardNgxChartsAdvancedPieComponent,
+    DashboardNgxChartsStackedAreaComponent,
+    OutsideClickDirective],
+  exports: [
+    DashboardNgxChartsAdvancedPieComponent,
+    DashboardNgxChartsStackedAreaComponent
+  ],
   providers: [DashboardService]
 })
 export class DashboardNgxChartsModule { }

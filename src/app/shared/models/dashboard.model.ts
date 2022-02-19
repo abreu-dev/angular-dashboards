@@ -5,5 +5,8 @@ export class DashboardModel {
     year: number;
     month: number;
     day: number;
+    name: string;
     values: DashboardItemModel[];
+    series: DashboardItemModel[];
+    childs: any[];
 }
