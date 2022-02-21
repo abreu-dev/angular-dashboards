@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 
-import { DashboardModel } from '../../../../models/dashboard.model';
 import { DashboardService } from '../../../../services/dashboard.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { DashboardService } from '../../../../services/dashboard.service';
 })
 export class DashboardNgxChartsAdvancedPieComponent { 
   chartData = [];
-  dashboard: DashboardModel;
+  dashboard: any;
 
   view: any[] = [700, 400];
   gradient: boolean = true;

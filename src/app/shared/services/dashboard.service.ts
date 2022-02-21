@@ -1,23 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import * as uuid from 'uuid';
-
-import { DashboardModel } from '../models/dashboard.model';
-import { DashboardItemModel } from '../models/dashboard-item.model';
-
-
 @Injectable()
 export class DashboardService {
-    public getForAdvancedPie(): DashboardModel {
-        const dashboard = new DashboardModel();
+    public getForAdvancedPie(): any {
+        const dashboard = {values:[]};
 
-        dashboard.id = uuid.v4();
-        dashboard.day = 1;
-        dashboard.month = 2;
-        dashboard.year = 2022;
-
-        const technology = new DashboardItemModel();
-        technology.id = uuid.v4();
+        const technology = {name: '', values: [], value: 0};
         technology.name = 'Technology'
         technology.values = [
             { name: 'Cellphones & Phones', value: this.randomInteger()},
@@ -27,8 +15,7 @@ export class DashboardService {
         ];
         technology.value = technology.values.reduce((sum, current) => sum + current.value, 0);
         
-        const clothing = new DashboardItemModel();
-        clothing.id = uuid.v4();
+        const clothing = {name: '', values: [], value: 0};
         clothing.name = 'Clothing'
         clothing.values = [
             { name: 'Shirts', value: this.randomInteger()},
@@ -37,8 +24,7 @@ export class DashboardService {
         ];
         clothing.value = clothing.values.reduce((sum, current) => sum + current.value, 0);
         
-        const homeAppliance = new DashboardItemModel();
-        homeAppliance.id = uuid.v4();
+        const homeAppliance = {name: '', values: [], value: 0};
         homeAppliance.name = 'Home Appliance'
         homeAppliance.values = [
             { name: 'Fridges', value: this.randomInteger()},
@@ -52,117 +38,105 @@ export class DashboardService {
         return dashboard;
     }
 
-    public getForStackedArea(): DashboardModel[] {
-        const technology = new DashboardModel();
-        technology.id = uuid.v4();
+    public getForStackedArea(): any[] {
+        const technology = {name: '', series: [], childs: []};
         technology.name = 'Technology';
         technology.series = [
-            { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-            { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-            { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+            { name: "12/2021", value: this.randomInteger() },
+            { name: "01/2022", value: this.randomInteger() },
+            { name: "02/2022", value: this.randomInteger() }
         ];
         technology.childs = [
             {
-                id: uuid.v4(),
                 name: 'Cellphones & Phones',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger() },
+                    { name: "01/2022", value: this.randomInteger() },
+                    { name: "02/2022", value: this.randomInteger() }
                 ] 
             },
             {
-                id: uuid.v4(),
                 name: 'Computing',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger() },
+                    { name: "01/2022", value: this.randomInteger() },
+                    { name: "02/2022", value: this.randomInteger() }
                 ] 
             },
             {
-                id: uuid.v4(),
                 name: 'Televisions',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger() },
+                    { name: "01/2022", value: this.randomInteger() },
+                    { name: "02/2022", value: this.randomInteger() }
                 ] 
             }
         ];
 
-        const clothing = new DashboardModel();
-        clothing.id = uuid.v4();
+        const clothing = {name: '', series: [], childs: []};
         clothing.name = 'Clothing';
         clothing.series = [
-            { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-            { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-            { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+            { name: "12/2021", value: this.randomInteger(), values: [] },
+            { name: "01/2022", value: this.randomInteger(), values: [] },
+            { name: "02/2022", value: this.randomInteger(), values: [] }
         ];
         clothing.childs = [
             {
-                id: uuid.v4(),
                 name: 'Cellphones & Phones',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger(), values: [] },
+                    { name: "01/2022", value: this.randomInteger(), values: [] },
+                    { name: "02/2022", value: this.randomInteger(), values: [] }
                 ] 
             },
             {
-                id: uuid.v4(),
                 name: 'Computing',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger(), values: [] },
+                    { name: "01/2022", value: this.randomInteger(), values: [] },
+                    { name: "02/2022", value: this.randomInteger(), values: [] }
                 ] 
             },
             {
-                id: uuid.v4(),
                 name: 'Televisions',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger(), values: [] },
+                    { name: "01/2022", value: this.randomInteger(), values: [] },
+                    { name: "02/2022", value: this.randomInteger(), values: [] }
                 ] 
             }
         ];
 
-        const homeAppliance = new DashboardModel();
-        homeAppliance.id = uuid.v4();
+        const homeAppliance = {name: '', series: [], childs: []};
         homeAppliance.name = 'Home Appliance';
         homeAppliance.series = [
-            { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-            { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-            { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+            { name: "12/2021", value: this.randomInteger(), values: [] },
+            { name: "01/2022", value: this.randomInteger(), values: [] },
+            { name: "02/2022", value: this.randomInteger(), values: [] }
         ];
         homeAppliance.childs = [
             {
-                id: uuid.v4(),
                 name: 'Cellphones & Phones',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger(), values: [] },
+                    { name: "01/2022", value: this.randomInteger(), values: [] },
+                    { name: "02/2022", value: this.randomInteger(), values: [] }
                 ] 
             },
             {
-                id: uuid.v4(),
                 name: 'Computing',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger(), values: [] },
+                    { name: "01/2022", value: this.randomInteger(), values: [] },
+                    { name: "02/2022", value: this.randomInteger(), values: [] }
                 ] 
             },
             {
-                id: uuid.v4(),
                 name: 'Televisions',
                 series: [
-                    { id: uuid.v4(), name: "12/2021", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "01/2022", value: this.randomInteger(), values: [] },
-                    { id: uuid.v4(), name: "02/2022", value: this.randomInteger(), values: [] }
+                    { name: "12/2021", value: this.randomInteger(), values: [] },
+                    { name: "01/2022", value: this.randomInteger(), values: [] },
+                    { name: "02/2022", value: this.randomInteger(), values: [] }
                 ] 
             }
         ];
